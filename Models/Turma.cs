@@ -27,6 +27,11 @@ public class Turma {
         Aberta = true;
     }
 
+    public void Fechar() {
+        if (!Aberta) throw new InvalidOperationException("A turma já está fechada.");
+        Aberta = false;
+    }
+
     public override string ToString() {
         return $"Turma: {IdTurma} - {Nome} | Aberta: {Aberta} | Alunos: {alunos.Count}";
     }
