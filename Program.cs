@@ -34,13 +34,13 @@ public class Program
             switch (opcao)
             {
                 case "1":
-                    alunoUI.Criar(LerInteiro("ID do aluno: "), LerTexto("Nome do aluno: "));
+                    alunoUI.Criar(LerTexto("Nome do aluno: "));
                     break;
                 case "2":
                     alunoUI.ExibirAlunos();
                     break;
                 case "3":
-                    turmaUI.Criar(LerInteiro("ID da turma: "), LerTexto("Nome da turma: "));
+                    turmaUI.Criar(LerTexto("Nome da turma: "));
                     break;
                 case "4":
                     turmaUI.ExibirTurmas();
