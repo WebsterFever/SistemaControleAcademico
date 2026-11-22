@@ -6,6 +6,11 @@ public class TurmaUI {
     private readonly TurmaService turmaService;
     public TurmaUI(TurmaService turmaService) => this.turmaService = turmaService;
 
+    public void Criar(string nome) => Executar(() => {
+        int id = turmaService.Criar(nome);
+        Console.WriteLine($"Turma cadastrada com sucesso! ID gerado automaticamente: {id}");
+    });
+
     public void Criar(int id, string nome) => Executar(() => {
         turmaService.Criar(id, nome);
         Console.WriteLine($"Turma {id} cadastrada com sucesso.");
