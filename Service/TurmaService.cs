@@ -42,6 +42,8 @@ public class TurmaService {
 
     public void Abrir(int idTurma) => ConsultarTurma(idTurma).Abrir();
 
+    public void Fechar(int idTurma) => ConsultarTurma(idTurma).Fechar();
+
     public List<Aluno> ConsultarPauta(int idTurma) => ConsultarTurma(idTurma).Alunos.ToList();
 
     public void Excluir(int idTurma) {
