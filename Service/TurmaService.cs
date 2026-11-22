@@ -16,7 +16,6 @@ public class TurmaService {
     public int Criar(string nome) {
         int id = proximoId;
         Criar(id, nome);
-        proximoId++;
         return id;
     }
 
