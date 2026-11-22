@@ -6,10 +6,18 @@ namespace SistemaControleAcademico.Service;
 public class AlunoService {
     private readonly AlunoRepository alunoRepository;
     private readonly TurmaRepository turmaRepository;
+    private int proximoId = 1;
 
     public AlunoService(AlunoRepository alunoRepository, TurmaRepository turmaRepository) {
         this.alunoRepository = alunoRepository;
         this.turmaRepository = turmaRepository;
+    }
+
+    public int Criar(string nome) {
+        int id = proximoId;
+        Criar(id, nome);
+        proximoId++;
+        return id;
     }
 
     public void Criar(int id, string nome) {
@@ -19,6 +27,7 @@ public class AlunoService {
         if (alunoRepository.ConsultarAluno(id) != null)
             throw new InvalidOperationException($"Já existe um aluno com ID {id}.");
         alunoRepository.Criar(new Aluno(id, nome.Trim()));
+        if (id >= proximoId) proximoId = checked(id + 1);
     }
 
     public Aluno ConsultarAluno(int id) =>
