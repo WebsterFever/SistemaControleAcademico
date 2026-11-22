@@ -6,10 +6,18 @@ namespace SistemaControleAcademico.Service;
 public class TurmaService {
     private readonly TurmaRepository turmaRepository;
     private readonly AlunoRepository alunoRepository;
+    private int proximoId = 1;
 
     public TurmaService(TurmaRepository turmaRepository, AlunoRepository alunoRepository) {
         this.turmaRepository = turmaRepository;
         this.alunoRepository = alunoRepository;
+    }
+
+    public int Criar(string nome) {
+        int id = proximoId;
+        Criar(id, nome);
+        proximoId++;
+        return id;
     }
 
     public void Criar(int id, string nome) {
@@ -19,6 +27,7 @@ public class TurmaService {
         if (turmaRepository.ConsultarTurma(id) != null)
             throw new InvalidOperationException($"Já existe uma turma com ID {id}.");
         turmaRepository.Criar(new Turma(id, nome.Trim()));
+        if (id >= proximoId) proximoId = checked(id + 1);
     }
 
     public Turma ConsultarTurma(int id) =>
