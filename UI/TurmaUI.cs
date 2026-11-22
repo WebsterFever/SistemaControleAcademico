@@ -31,6 +31,11 @@ public class TurmaUI {
         Console.WriteLine($"Turma {idTurma} aberta com sucesso.");
     });
 
+    public void Fechar(int idTurma) => Executar(() => {
+        turmaService.Fechar(idTurma);
+        Console.WriteLine($"Turma {idTurma} fechada com sucesso.");
+    });
+
     public void ExibirPauta(int idTurma) => Executar(() => {
         Console.WriteLine($"\nPAUTA DA TURMA {idTurma}:");
         var alunos = turmaService.ConsultarPauta(idTurma);
