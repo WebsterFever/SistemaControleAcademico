@@ -1,6 +1,7 @@
 using SistemaControleAcademico.Repository;
 using SistemaControleAcademico.Service;
 using SistemaControleAcademico.UI;
+using SistemaControleAcademico.Tests;
 
 namespace SistemaControleAcademico;
 
@@ -22,6 +23,7 @@ public class Program
             Console.WriteLine("8 - Exibir turmas de um aluno");
             Console.WriteLine("9 - Excluir turma");
             Console.WriteLine("10 - Fechar turma");
+            Console.WriteLine("11 - Executar testes do sistema");
             Console.WriteLine("0 - Sair");
             Console.Write("Escolha uma opção: ");
 
@@ -63,6 +65,9 @@ public class Program
                     break;
                 case "10":
                     turmaUI.Fechar(LerInteiro("ID da turma: "));
+                    break;
+                case "11":
+                    TestesSistema.Executar();
                     break;
                 default:
                     Console.WriteLine("Opção inválida. Tente novamente.");
