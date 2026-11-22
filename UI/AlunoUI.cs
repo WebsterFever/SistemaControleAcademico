@@ -6,6 +6,11 @@ public class AlunoUI {
     private readonly AlunoService alunoService;
     public AlunoUI(AlunoService alunoService) => this.alunoService = alunoService;
 
+    public void Criar(string nome) => Executar(() => {
+        int id = alunoService.Criar(nome);
+        Console.WriteLine($"Aluno cadastrado com sucesso! ID gerado automaticamente: {id}");
+    });
+
     public void Criar(int id, string nome) => Executar(() => {
         alunoService.Criar(id, nome);
         Console.WriteLine($"Aluno {id} cadastrado com sucesso.");
